@@ -1,0 +1,111 @@
+package com.example.smubf08.quizapp;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+    EditText editText;
+    TextView textView;
+    RadioButton radioButton;
+    CheckBox checkBox1, checkBox2, checkBox3, checkBox4;
+    int number = 0;
+    boolean flag = false, flag2 = false, flag3 = false, flag4 = false;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        textView = findViewById(R.id.score);
+        textView.setText("Score : " + number);
+    }
+
+    public void answerOne(View view) {
+        textView = findViewById(R.id.score);
+        editText = findViewById(R.id.manchester);
+        String name = editText.getText().toString();
+        if (name.equals(null) || name.length() == 0) {
+            Toast.makeText(this, "Please Type Your Answer", Toast.LENGTH_SHORT).show();
+            return;
+        } else if (name.equalsIgnoreCase("Manchester United")) {
+            if (flag == false) {
+                number = number + 25;
+                textView.setText("Score : " + number);
+                flag = true;
+                Toast.makeText(this, "Correct Answer" + "\n" + "25 score is added.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            Toast.makeText(this, "Correct Answer", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Incorrect Answer" + "\n" + "Correct Answer: Manchester United", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    public void answerTwo(View view) {
+        textView = findViewById(R.id.score);
+        radioButton = findViewById(R.id.gunnar);
+        if (radioButton.isChecked()) {
+            if (flag2 == false) {
+                number =number + 25;
+                textView.setText("Score : " + number);
+                flag2 = true;
+                Toast.makeText(this, "Correct Answer" + "\n" + "25 score is added.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            Toast.makeText(this, "Correct Answer", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Incorrect Answer " + "\n" + "Correct Answer: Ole Gunnar Solskjær", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    public void answerThree(View view) {
+        textView = findViewById(R.id.score);
+        checkBox1 = findViewById(R.id.lionel_messi);
+        checkBox2 = findViewById(R.id.paul_pogba);
+        checkBox3 = findViewById(R.id.Kylian_Mbappé);
+        checkBox4 = findViewById(R.id.mason_greenwood);
+
+        if ((checkBox2.isChecked() && checkBox4.isChecked()) && (!checkBox1.isChecked() && !checkBox3.isChecked())) {
+            if (flag3 == false) {
+                number = number + 25;
+                textView.setText("Score : " + number);
+                flag3 = true;
+                Toast.makeText(this, "Correct Answer" + "\n" + "25 score is added.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            Toast.makeText(this, "Correct Answer", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Incorrect Answer " + "\n" + "Correct Answer: Paul Pogba and Mason Greenwood", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    public void answerFour(View view) {
+        textView = findViewById(R.id.score);
+        editText = findViewById(R.id.united);
+        String name = editText.getText().toString();
+        if (name.equals(null) || name.length() == 0) {
+            Toast.makeText(this, "Please Type Your Answer", Toast.LENGTH_SHORT).show();
+            return;
+        } else if (name.equalsIgnoreCase("Bruno Fernandes") || name.equalsIgnoreCase("brunofernandes")) {
+            if (flag4 == false) {
+                number = number + 25;
+                textView.setText("Score : " + number);
+                flag4 = true;
+                Toast.makeText(this, "Correct Answer" + "\n" + "25 score is added.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            Toast.makeText(this, "Correct Answer", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Incorrect Answer" + "\n" + "Correct Answer: Bruno Fernandes", Toast.LENGTH_SHORT).show();
+        }
+    }
+}
